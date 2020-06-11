@@ -1,0 +1,35 @@
+body {
+    background-color: rgb(233, 236, 243);
+    /* background-color: red; */
+}
+
+#header {
+    padding: 30px;
+    background-color: white;
+}
+
+#container {
+    padding: 60px 20% 200px 20%;
+}
+
+p {
+    font-size: 20px;
+}
+
+code {
+    color: #E01A76;
+}
+
+#cell {
+    padding: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+    background-color: rgba(253, 253, 253, 0.5);
+    border-radius: 10px;
+    transition: transform 0.2s;
+    -webkit-box-shadow:  15px 15px 27px #e1e1e3, -15px -15px 27px rgb(233, 236, 243);
+  box-shadow:  15px 15px 27px #e1e1e3, -15px -15px 27px rgb(233, 236, 243);
+}
+#cell:hover {
+    transform: scale(1.03);
+}
