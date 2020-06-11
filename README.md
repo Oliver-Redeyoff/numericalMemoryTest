@@ -14,3 +14,6 @@ To build and run the project, use the following command :
 ```
 dotnet run
 ```
+
+This assumes that you have .net core installed on your local machine, if you do not you can download it here :
+https://dotnet.microsoft.com/download
