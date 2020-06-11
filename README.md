@@ -1,5 +1,5 @@
 # numericalMemoryTest
-This is a assessement which tests how good the user is at memorising numbers.
+This is an assessment which measures Numerical Memory.
 
 ## How to run
 First of all clone the reposotory to your machine and then enter the folder with :
