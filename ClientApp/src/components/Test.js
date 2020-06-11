@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Progress } from 'reactstrap';
+import { Button } from 'reactstrap';
 
 
 class Test extends Component {
@@ -22,16 +22,17 @@ class Test extends Component {
   }
 
   message = "Loading..."
-  // numViewTime = 3
   currentNumber = ""
   index = 0
   currentResponseTime = 0
   score = 0
 
+  // When the component mounts, get assessment data from the backend API
   componentDidMount() {
     this.populateNumbersData();
   }
 
+  // Start the test, start a 60 second timer for the test and display first number
   startTest() {
     console.log("starting test");
 
@@ -50,6 +51,7 @@ class Test extends Component {
     this.currentNumber = this.state.data[this.index];
     this.message = this.currentNumber
 
+    // set up number viewing countdown
     this.setState({
       ...this.state,
       allowInput: "disabled",
@@ -69,9 +71,10 @@ class Test extends Component {
 
   }
 
-
+  // Move into the next number viewing state
+  // Check that the inputed number was correct and display next number
   nextViewing() {
-    // First check that the inputed number is correct
+    // first check that the inputed number is correct
     var nInput = document.getElementById("numInput")
     console.log(nInput.value)
     console.log(this.currentNumber)
@@ -84,10 +87,12 @@ class Test extends Component {
 
     this.numInput.current.focus();
 
+    // set up the next number to be displayed
     this.index += 1
     this.currentNumber = this.state.data[this.index]
     this.message = this.currentNumber
 
+    // set up number viewing countdown
     this.setState({
       ...this.state,
       allowInput: "disabled",
@@ -107,9 +112,9 @@ class Test extends Component {
 
   }
 
-
+  // Move into the input state
+  // Listen for user input and start timer to see how long the user takes to answer
   endViewing() {
-    // Move on to the input state
     this.message = "What was the number?"
     this.setState({
       ... this.state,
@@ -125,15 +130,14 @@ class Test extends Component {
 
   }
 
-
+  // Store time taken to answer and move on to next number viewing
   validateChoice() {
-    console.log(this.currentResponseTime)
     clearInterval(this.responseTimer)
     this.props.newTime(this.currentResponseTime)
     this.nextViewing()
   }
 
-
+  // Check for 'enter' input to validate number input
   handleKeyDown(e) {
     if (e.key === "Enter") {
       this.validateChoice()
@@ -164,7 +168,7 @@ class Test extends Component {
             overflow: "hidden",
             color: "indianred"
           }}>
-          <h2 style={{
+          <h2 id="numDisplay" style={{
             fontSize: "56px",
             marginBottom: "20px",
           }}>{this.message}</h2>
@@ -201,6 +205,7 @@ class Test extends Component {
     );
   }
 
+  // Get assessment data from backendAPI and store in component state
   async populateNumbersData() {
     const response = await fetch('numTest');
     const data = await response.json();
@@ -208,10 +213,11 @@ class Test extends Component {
       ... this.state,
       data: data
     });
+    // Once data is loaded, start test
     this.startTest();
-    // this.validateNumber();
   }
 
+  // Clear all timers when component is unmounting
   componentWillUnmount() {
     clearInterval(this.mainTimer)
     clearInterval(this.testTimer)

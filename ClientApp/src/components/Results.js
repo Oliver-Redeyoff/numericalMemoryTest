@@ -7,19 +7,17 @@ import {
 
 class Results extends Component {
 
-
+  // When component did mount, send data to the backend API as a POST request
   componentDidMount() {
     console.log("sending data to backend")
     const requestOptions = {
       method: 'POST',
-      // headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ data: this.props.times })
     };
     fetch('numTest', requestOptions)
         .then(response => response.json())
         .then(data => console.log(data));
-        // .then(data => this.setState({ postId: data.id }));
-
   }
 
   render() {

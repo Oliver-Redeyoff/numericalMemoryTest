@@ -3,7 +3,6 @@ import Home from './components/Home';
 import Test from './components/Test';
 import Results from './components/Results';
 
-// import './custom.css'
 import './App.css'
 
 class App extends Component {
@@ -19,6 +18,7 @@ class App extends Component {
     this.addTime = this.addTime.bind(this)
   }
 
+  // Callback function to allow components to trigger transition to next page
   nextPageCallback = () => {
 
     this.setState({
@@ -28,15 +28,7 @@ class App extends Component {
 
   }
 
-  increaseScore = () => {
-
-    this.setState({
-      ...this.state,
-      score: this.state.score+10
-    });
-
-  }
-
+  // Callback function to add 10 to current score value
   increaseScore = () => {
     this.setState({
       ...this.state,
@@ -45,6 +37,7 @@ class App extends Component {
     })
   }
 
+  // Callback function which adds a response time to the the current response time list
   addTime(time) {
 
     var tempList = this.state.timeList
