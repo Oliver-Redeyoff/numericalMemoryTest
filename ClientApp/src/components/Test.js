@@ -194,7 +194,7 @@ class Test extends Component {
           }}>Next number</Button>
         </div>
         
-        <Button onClick={this.props.validate}>Go</Button>
+        {/* <Button onClick={this.props.validate}>Debug</Button> */}
         
       </div>
       
