@@ -24,7 +24,7 @@ https://dotnet.microsoft.com/download
 In total I spent around 6 hours on this project.
 
 ### What part of the application are you most proud of?
-I am most proud of the test component, as getting all the timers to work properly together was slightly challenging at first.
+I am most proud of the react test component, as getting all the timers to work properly together was slightly challenging at first.
 Equally, I very much like the graph given in the results summary, although I can't take much credit for this as it comes from a library.
 
 ### If you had more time what would you improve in the application
