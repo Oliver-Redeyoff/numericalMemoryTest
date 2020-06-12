@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import {
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
 
 
@@ -44,16 +44,21 @@ class Results extends Component {
           <Col>
             <div id="cell">
               <h3>Time taken for each answer in seconds:</h3>
-
-              <LineChart width={730} height={250} data={this.props.times}
-                margin={{ top: 30, right: 20, left: 20, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                {/* <Legend /> */}
-                <Line type="monotone" dataKey="value" stroke="#E01A76" />
-              </LineChart>
+              
+              <ResponsiveContainer width="90%" height={250}>
+                <LineChart data={this.props.times}
+                  margin={{ top: 30, right: 20, left: 20, bottom: 0 }} style={{
+                    width: "40%",
+                    minWidth: "400px"
+                  }}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                  <Tooltip />
+                  {/* <Legend /> */}
+                  <Line type="monotone" dataKey="value" stroke="#E01A76" />
+                </LineChart>
+              </ResponsiveContainer>
             </div>
           </Col>
         </Row>
